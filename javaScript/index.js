@@ -11,10 +11,6 @@
 
 
 
-/* call the playRound function inside of this one to play a 5 round
-game that keeps score and reports a winner or loser at the end. */
-
-// use loops to handle the rounds
 
 // Begin with function getComputerChoice()
 
@@ -66,9 +62,54 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         return 'You lose! Rock beats Scissors';
     } else {
-        return 'Tie game!';
+        return 'tie game!';
     }
-        
+    
 }
 
 // Write a new function called game()
+
+function game() {
+
+    /* call the playRound function inside of this one to play a 5 round
+    game that keeps score and reports a winner or loser at the end. */
+    
+    // use loops to handle the rounds
+
+    let result;
+    let myScore = 0;
+    let computerScore = 0;
+
+    let winCondition = /win/;
+    let loseCondition = /lose/;
+    let tieCondition = /tie/;
+
+    for (let i = 0; i < 5; i++) {
+        result = playRound(prompt('enter rock, paper, or scissors'));
+
+        if (winCondition.test(result)) {
+            myScore++;
+            computerScore--;
+        } else if (loseCondition.test(result)) {
+            myScore--;
+            computerScore++;
+        } else if (tieCondition.test(result)) {
+            myScore;
+            computerScore;
+        } else {
+            prompt('please enter rock, paper, or scissors correctly!');
+    }
+
+        console.log(`Your score is ${myScore}, the opponent's score is ${computerScore}`);
+
+    }
+
+    if (myScore > computerScore) {
+        return `Your score is ${myScore}, the opponent's score is ${computerScore}...You Win!`;
+    } else if (myScore < computerScore) {
+        return `Your score is ${myScore}, the opponent's score is ${computerScore}...You Lose!`;
+    } else {
+        return `Tie game!`;
+    }
+    
+}
